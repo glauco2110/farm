@@ -12,8 +12,6 @@ export class NotifyInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-
     return next.handle(req).do(
       (event: HttpEvent<any>) => {
         if (req.method !== 'GET' && event instanceof HttpResponse && event.status === 200) {
@@ -26,7 +24,6 @@ export class NotifyInterceptor implements HttpInterceptor {
         } else {
           this.toastr.error(err.error.errors);
         }
-
       }
     );
   }
