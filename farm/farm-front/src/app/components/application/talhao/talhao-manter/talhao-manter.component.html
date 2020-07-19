@@ -1,0 +1,70 @@
+<form class="form-horizontal" #form="ngForm" (ngSubmit)="save()" novalidate>
+
+  <div class="row">
+    <div class="col-md-8">
+      <h4>Fazenda</h4> / Talhão / Manter
+    </div>
+  </div>
+
+
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group-sm">
+            <label class="control-label" for="codigo">Codigo:</label>
+            <input name="codigo" #codigo="ngModel" type="text" maxlength="255" [(ngModel)]="talhao.codigo" class="form-control" placeholder="Codigo" id="codigo" required [maxLength]="5" />
+            <span class="help-block" *ngIf="codigo.invalid && codigo.dirty">Codigo é obrigatorio</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group-sm">
+            <label class="control-label" for="area">Area:</label>
+            <input name="area" #area="ngModel" type="number" [(ngModel)]="talhao.area" class="form-control" placeholder="Area" id="area" required />
+            <span class="help-block" *ngIf="area.invalid && area.dirty">Area é obrigatorio</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group-sm">
+            <label class="control-label" for="plantaPorMetro">Planta por metro:</label>
+            <input name="plantaPorMetro" #plantaPorMetro="ngModel" type="number" [(ngModel)]="talhao.plantaPorMetro" class="form-control" placeholder="Planta por metro" id="plantaPorMetro" required />
+            <span class="help-block" *ngIf="plantaPorMetro.invalid && plantaPorMetro.dirty">Planta por metro é obrigatorio</span>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group-sm">
+            <label class="control-label" for="espacamentoPorPlanta">Espaçamento por planta:</label>
+            <input name="espacamentoPorPlanta" #espacamentoPorPlanta="ngModel" type="number" [(ngModel)]="talhao.espacamentoPorPlanta" class="form-control" placeholder="Espaçamento por Planta" id="espacamentoPorPlanta" required />
+            <span class="help-block" *ngIf="espacamentoPorPlanta.invalid && espacamentoPorPlanta.dirty">Espaçamento por planta é obrigatorio</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-footer">
+      <div class="row">
+        <div class="col-md-12">
+          <a *ngIf="talhao.fazenda.id" class="btn btn-danger" [routerLink]="['/fazenda-alterar', talhao.fazenda.id]">Cancelar</a>
+          <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right">Salvar</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>
+
+<div *ngIf="talhao.id">
+  <app-producao-manter idTalhao="{{talhao.id}}"></app-producao-manter>
+</div>
+

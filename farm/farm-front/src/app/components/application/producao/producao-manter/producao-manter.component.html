@@ -1,0 +1,87 @@
+<form class="form-horizontal" #form="ngForm" (ngSubmit)="incluirProducao()" novalidate>
+
+  <div class="panel panel-success">
+
+    <div class="panel-title">
+      <div class="row">
+        <div class="col-md-12">
+          <h5>Registrar Produção</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group-sm">
+            <label class="control-label" for="ano">Ano:</label>
+            <select name="ano" #ano="ngModel" class="form-control" [(ngModel)]="producao.ano" id="ano" required>
+              <option *ngFor="let ano of anos">{{ano}}</option>
+            </select>
+            <span class="help-block" *ngIf="ano.invalid && ano.dirty">Ano é obrigatorio</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group-sm">
+            <label class="control-label" for="vagensPorPlanta">Vagens por planta:</label>
+            <input name="vagensPorPlanta" #vagensPorPlanta="ngModel" type="number" [(ngModel)]="producao.vagensPorPlanta" class="form-control"  id="vagensPorPlanta" required />
+            <span class="help-block" *ngIf="vagensPorPlanta.invalid && vagensPorPlanta.dirty">Vagens por planta é obrigatorio</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group-sm">
+            <label class="control-label" for="graosPorVagen">Grãos por vagem:</label>
+            <input name="graosPorVagen" #graosPorVagen="ngModel" type="number" [(ngModel)]="producao.graosPorVagen" class="form-control"  id="graosPorVagen" required />
+            <span class="help-block" *ngIf="graosPorVagen.invalid && graosPorVagen.dirty">Grãos por vagem é obrigatorio</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group-sm">
+            <label class="control-label" for="gramasACadaCem">Gramas a cada 100 grãos:</label>
+            <input name="gramasACadaCem" #gramasACadaCem="ngModel" type="number" [(ngModel)]="producao.gramasACadaCem" class="form-control"  id="gramasACadaCem" required />
+            <span class="help-block" *ngIf="gramasACadaCem.invalid && gramasACadaCem.dirty">Grãos por vagem é obrigatorio</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <div class="row">
+        <div class="col-md-12">
+            <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div class="panel panel-default" *ngIf="list.length > 0">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-bordered">
+          <tr>
+            <th>Data</th>
+            <th>Vagens por planta</th>
+            <th>Grãos por vagem</th>
+            <th>Gramas a cada 100 grãos</th>
+            <th style="width: 5%;"></th>
+          </tr>
+          <tr *ngFor="let producao of list">
+            <td> {{producao.ano}} </td>
+            <td> {{producao.vagensPorPlanta}} </td>
+            <td> {{producao.graosPorVagen}} </td>
+            <td> {{producao.gramasACadaCem}} </td>
+            <td>
+              <button class="btn btn-danger" (click)="excluir(producao.id)">Delete</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-10">
+    <h4>Fazenda</h4>
+  </div>
+  <div class="col-md-2 pull-right">
+    <a class="btn btn-primary" [routerLink]="['/fazenda-incluir']">Incluir</a>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <table class="table table-bordered">
+      <tr>
+        <th>Nome</th>
+        <th style="width: 5%;"></th>
+      </tr>
+      <tr *ngFor="let fazenda of list">
+        <td>
+          <a [routerLink]="['/fazenda-alterar', fazenda.id]">
+            {{fazenda.nome}}
+          </a>
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="delete(fazenda.id)">Delete</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
