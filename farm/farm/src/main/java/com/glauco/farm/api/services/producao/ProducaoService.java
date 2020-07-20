@@ -10,4 +10,7 @@ import com.glauco.farm.api.services.BaseService;
 public interface ProducaoService extends BaseService<Producao> {
 
     Page<Producao> findByTalhaoId(int page, int count, String talhaoId);
+
+    Producao findByTalhaoIdAno(String id, Integer ano);
+
 }

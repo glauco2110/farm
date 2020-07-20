@@ -28,7 +28,7 @@ export class ProducaoManterComponent implements OnInit {
 
   ngOnInit() {
     this.findByTalhaoId();
-    for (let i = 1990; i <= 2020; i++) {
+    for (let i = 2010; i <= 2020; i++) {
       this.anos.push(i);
     }
   }

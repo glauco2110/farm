@@ -1,5 +1,7 @@
 package com.glauco.farm.api.services.talhao.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -41,5 +43,10 @@ public class TalhaoServiceImpl implements TalhaoService {
     public Page<Talhao> findByFazendaId(int page, int count, String fazendaId) {
         Pageable pages = new PageRequest(page, count);
         return this.talhaoRepository.findByFazendaId(pages, fazendaId);
+    }
+
+    @Override
+    public List<Talhao> findAllByFazendaId(String fazendaId) {
+        return this.talhaoRepository.findAllByFazendaId(fazendaId);
     }
 }

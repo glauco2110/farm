@@ -25,7 +25,7 @@ public class Talhao {
     private String codigo;
 
     @NotBlank(message = "Area é de preenchimento obrigatorio")
-    private Long area;
+    private Double area;
 
     @NotBlank(message = "Planta por metro é de preenchimento obrigatorio")
     private Long plantaPorMetro;

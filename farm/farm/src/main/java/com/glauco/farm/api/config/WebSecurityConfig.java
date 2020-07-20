@@ -23,6 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/",
                         "/api/**",
                         "/api/**/*",
+                        "/api/**/**/*",
                         "/*.html",
                         "/favicon.ico",
                         "/**/*.html",

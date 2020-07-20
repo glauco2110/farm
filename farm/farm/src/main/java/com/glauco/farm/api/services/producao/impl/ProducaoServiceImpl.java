@@ -1,5 +1,7 @@
 package com.glauco.farm.api.services.producao.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,6 +22,11 @@ public class ProducaoServiceImpl implements ProducaoService {
     public Page<Producao> findByTalhaoId(int page, int count, String talhaoId) {
         Pageable pages = new PageRequest(page, count);
         return this.producaoRepository.findByTalhaoId(pages, talhaoId);
+    }
+
+    @Override
+    public Producao findByTalhaoIdAno(String talhaoId, Integer ano) {
+        return this.producaoRepository.findByTalhaoIdAndAno(talhaoId, ano);
     }
 
     @Override

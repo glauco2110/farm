@@ -20,6 +20,7 @@
           </a>
         </td>
         <td>
+          <a [routerLink]="['/fazenda-consultar', fazenda.id]" class="btn btn-success">Consultar</a>
           <button class="btn btn-danger" (click)="delete(fazenda.id)">Delete</button>
         </td>
       </tr>
