@@ -1,0 +1,74 @@
+<form class="form-horizontal" #form="ngForm" (ngSubmit)="findByIdAno()" novalidate>
+
+  <div class="panel">
+    <div class="panel-default">
+      <div class="panel-title">
+        <div class="row">
+          <div class="col-md-12">
+            <h4>{{this.fazenda.nome}}</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group-sm">
+              <label class="control-label" for="ano">Ano: </label>
+              <select name="ano" #ano="ngModel" class="form-control" [(ngModel)]="anoReferencia" id="ano" required>
+                <option *ngFor="let ano of anos">{{ano}}</option>
+              </select>
+              <span class="help-block" *ngIf="ano.invalid && ano.dirty">Ano é obrigatorio</span>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="row" *ngIf="produtividade">
+          <div class="col-md-12">
+            <table class="table table-bordered">
+              <thead>
+              <tr>
+                <th>Nome</th>
+                <th colspan="7">{{produtividade.fazenda.nome}}</th>
+              </tr>
+              </thead>
+
+              <tbody *ngFor="let talhao of produtividade.producaoTalhaoDTOList">
+                <tr>
+                  <td>
+                    <strong>Talhao:</strong>
+                  </td>
+                  <td colspan="7">
+                    {{talhao.talhao.codigo}}
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Area</strong></td>
+                  <td>{{talhao.talhao.area}}</td>
+                  <td><strong>Plantas por metro:</strong></td>
+                  <td>{{talhao.talhao.plantaPorMetro}}</td>
+                  <td><strong>Espaçamento por planta:</strong></td>
+                  <td>{{talhao.talhao.espacamentoPorPlanta}} cm</td>
+                  <td><strong>Total:</strong></td>
+                  <td>{{talhao.total}} kg</td>
+                </tr>
+              </tbody>
+              <tr>
+                <td colspan="7" align="right"><strong>Total:</strong></td>
+                <td>{{produtividade.valor}} kg</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <div class="row">
+        <div class="col-md-12">
+          <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right">Consultar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</form>

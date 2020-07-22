@@ -18,7 +18,8 @@ import {TalhaoManterComponent} from './components/application/talhao/talhao-mant
 import {TalhaoService} from './services/talhao/talhao.service';
 import {ProducaoService} from './services/producao/producao.service';
 import { ProducaoManterComponent } from './components/application/producao/producao-manter/producao-manter.component';
-import { FazendaConsultarComponent } from './components/application/fazenda/fazenda-consultar/fazenda-consultar.component';
+import { FazendaProdutividadeComponent } from './components/application/fazenda/fazenda-produtividade/fazenda-produtividade.component';
+import {ProdutividadeService} from './services/produtividade/produtividade.service';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { FazendaConsultarComponent } from './components/application/fazenda/faze
     FazendaListarComponent,
     TalhaoManterComponent,
     ProducaoManterComponent,
-    FazendaConsultarComponent,
+    FazendaProdutividadeComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +47,7 @@ import { FazendaConsultarComponent } from './components/application/fazenda/faze
     FazendaService,
     TalhaoService,
     ProducaoService,
+    ProdutividadeService,
     httpInterceptorProviders,
   ],
   bootstrap: [AppComponent]
