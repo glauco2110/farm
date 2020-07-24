@@ -26,4 +26,17 @@
       </tr>
     </table>
   </div>
+  <div class="panel-footer">
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="pagination pagination-sm no-margin pull-right">
+          <li><a href="" (click)="setPreviousPage($event)">&laquo;</a></li>
+          <li *ngFor="let p of pages; let i=index">
+            <a [ngClass]="{'pagination-focus':i==page}"  href="" (click)="setPage(i,$event)">{{i+1}}</a>
+          </li>
+          <li><a href="" (click)="setNextPage($event)">&raquo;</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>

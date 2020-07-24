@@ -19,6 +19,7 @@ export class FazendaManterComponent implements OnInit {
 
   page = 0;
   count = 5;
+  pages: Array<number>;
   talhoes = [];
 
   constructor(private fazendaService: FazendaService,
@@ -52,10 +53,33 @@ export class FazendaManterComponent implements OnInit {
     }
   }
 
-  private populateTalhoes() {
+  populateTalhoes() {
     this.talhaoService.findByFazendaId(this.page, this.count, this.fazenda.id).subscribe(response => {
       this.talhoes = response['data']['content'];
+      this.pages = new Array(response['data']['totalPages']);
     });
+  }
+
+  setNextPage(event: any) {
+    event.preventDefault();
+    if (this.page + 1 < this.pages.length) {
+      this.page =  this.page + 1;
+      this.populateTalhoes();
+    }
+  }
+
+  setPreviousPage(event: any) {
+    event.preventDefault();
+    if (this.page > 0) {
+      this.page =  this.page - 1;
+      this.populateTalhoes();
+    }
+  }
+
+  setPage(i, event: any) {
+    event.preventDefault();
+    this.page = i;
+    this.populateTalhoes();
   }
 
 }
