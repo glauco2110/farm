@@ -18,7 +18,7 @@ public class Producao {
 
     private Integer ano;
 
-    private Double vagensPorPlanta;
+    private Integer vagensPorPlanta;
 
     private Integer graosPorVagen;
 
